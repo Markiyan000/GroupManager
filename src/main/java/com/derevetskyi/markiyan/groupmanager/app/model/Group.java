@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Table(name = "group")
+@Table(name = "group_")
 public class Group {
 
     @Id
@@ -18,10 +18,10 @@ public class Group {
     @Column(name = "date_of_creation")
     private LocalDate dateOfCreation;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "group")
     private Teacher curator;
 
-    @OneToMany
+    @OneToMany(mappedBy = "group")
     private List<Student> students;
 
     public Group() {
