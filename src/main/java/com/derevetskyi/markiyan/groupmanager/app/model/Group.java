@@ -1,11 +1,16 @@
 package com.derevetskyi.markiyan.groupmanager.app.model;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
+import org.hibernate.annotations.LazyToOne;
+import org.hibernate.annotations.LazyToOneOption;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
 @Entity
 @Table(name = "group_")
+@JsonFilter("GroupId")
 public class Group {
 
     @Id
@@ -18,10 +23,10 @@ public class Group {
     @Column(name = "date_of_creation")
     private LocalDate dateOfCreation;
 
-    @OneToOne(mappedBy = "group")
+    @OneToOne(mappedBy = "group", fetch = FetchType.LAZY)
     private Teacher curator;
 
-    @OneToMany(mappedBy = "group")
+    @OneToMany(mappedBy = "group", fetch = FetchType.LAZY)
     private List<Student> students;
 
     public Group() {
