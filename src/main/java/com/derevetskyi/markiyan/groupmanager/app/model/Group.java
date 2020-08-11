@@ -23,7 +23,8 @@ public class Group {
     @Column(name = "date_of_creation")
     private LocalDate dateOfCreation;
 
-    @OneToOne(mappedBy = "group", fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "curator_id")
     private Teacher curator;
 
     @OneToMany(mappedBy = "group", fetch = FetchType.LAZY)
@@ -81,4 +82,6 @@ public class Group {
     public void setStudents(List<Student> students) {
         this.students = students;
     }
+
+
 }

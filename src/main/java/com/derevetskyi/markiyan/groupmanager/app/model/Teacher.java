@@ -21,8 +21,7 @@ public class Teacher {
     @Column(name = "experience")
     private int experience;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "group_id")
+    @OneToOne(mappedBy = "curator")
     private Group group;
 
     @ElementCollection
