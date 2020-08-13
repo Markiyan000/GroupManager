@@ -1,5 +1,7 @@
 package com.derevetskyi.markiyan.groupmanager.app.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -59,6 +61,7 @@ public class Student {
         this.age = age;
     }
 
+    @JsonIgnore
     public Group getGroup() {
         return group;
     }

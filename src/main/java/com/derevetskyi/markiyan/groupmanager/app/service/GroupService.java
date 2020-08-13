@@ -22,4 +22,9 @@ public class GroupService {
     public List<Group> findAll() {
         return groupRepository.findAll();
     }
+
+    @Transactional(readOnly = true)
+    public Group findById(Long id) {
+        return groupRepository.findById(id).get();
+    }
 }

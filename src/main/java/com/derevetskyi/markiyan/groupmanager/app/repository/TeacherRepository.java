@@ -1,18 +1,18 @@
 package com.derevetskyi.markiyan.groupmanager.app.repository;
 
-import com.derevetskyi.markiyan.groupmanager.app.model.Group;
+import com.derevetskyi.markiyan.groupmanager.app.model.Teacher;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.util.Optional;
 
 @Repository
 @Transactional
-public interface GroupRepository extends JpaRepository<Group, Long> {
+public interface TeacherRepository extends JpaRepository<Teacher, Long> {
 
-    @Transactional(readOnly = true)
-    @Query("select g from Group g join fetch g.students join fetch g.curator where g.id = :id")
-    Optional<Group> findById(@Param(value = "id") Long id);
+    @Query("select t from Teacher t join fetch t.subjects where t.id = :id")
+    Optional<Teacher> findById(@Param(value="id") Long id);
 }

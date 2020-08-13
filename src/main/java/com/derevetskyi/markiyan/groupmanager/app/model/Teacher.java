@@ -1,5 +1,7 @@
 package com.derevetskyi.markiyan.groupmanager.app.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,10 +23,8 @@ public class Teacher {
     @Column(name = "experience")
     private int experience;
 
-    @OneToOne(mappedBy = "curator")
-    private Group group;
-
-    @ElementCollection
+    @JsonIgnore
+    @ElementCollection(fetch = FetchType.LAZY)
     @CollectionTable(name = "subject", joinColumns = @JoinColumn(name = "teacher_id"))
     @Column(name = "name")
     private List<String> subjects;
@@ -84,11 +84,4 @@ public class Teacher {
         this.experience = experience;
     }
 
-    public Group getGroup() {
-        return group;
-    }
-
-    public void setGroup(Group group) {
-        this.group = group;
-    }
 }

@@ -1,16 +1,11 @@
 package com.derevetskyi.markiyan.groupmanager.app.model;
 
-import com.fasterxml.jackson.annotation.JsonFilter;
-import org.hibernate.annotations.LazyToOne;
-import org.hibernate.annotations.LazyToOneOption;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
 @Entity
 @Table(name = "group_")
-@JsonFilter("GroupId")
 public class Group {
 
     @Id
@@ -82,6 +77,5 @@ public class Group {
     public void setStudents(List<Student> students) {
         this.students = students;
     }
-
 
 }
