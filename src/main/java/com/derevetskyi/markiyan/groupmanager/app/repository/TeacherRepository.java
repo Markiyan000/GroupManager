@@ -13,6 +13,6 @@ import java.util.Optional;
 @Transactional
 public interface TeacherRepository extends JpaRepository<Teacher, Long> {
 
-    @Query("select t from Teacher t join fetch t.subjects where t.id = :id")
+    @Query("select t from Teacher t left join fetch t.subjects where t.id = :id")
     Optional<Teacher> findById(@Param(value="id") Long id);
 }

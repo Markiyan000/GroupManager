@@ -13,6 +13,6 @@ import java.util.Optional;
 public interface GroupRepository extends JpaRepository<Group, Long> {
 
     @Transactional(readOnly = true)
-    @Query("select g from Group g join fetch g.students join fetch g.curator where g.id = :id")
+    @Query("select g from Group g left join fetch g.students left join fetch g.curator where g.id = :id")
     Optional<Group> findById(@Param(value = "id") Long id);
 }
