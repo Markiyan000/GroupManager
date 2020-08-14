@@ -1,5 +1,6 @@
 package com.derevetskyi.markiyan.groupmanager.app.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
@@ -16,6 +17,7 @@ public class Group {
     private String name;
 
     @Column(name = "date_of_creation")
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate dateOfCreation;
 
     @OneToOne(fetch = FetchType.LAZY)
