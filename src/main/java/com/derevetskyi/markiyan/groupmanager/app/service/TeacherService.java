@@ -5,14 +5,17 @@ import com.derevetskyi.markiyan.groupmanager.app.repository.TeacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 
 @Service
 public class TeacherService {
 
-    @Autowired
     private TeacherRepository teacherRepository;
+
+    @Autowired
+    public TeacherService(TeacherRepository teacherRepository) {
+        this.teacherRepository = teacherRepository;
+    }
 
     @Transactional(readOnly = true)
     public List<Teacher> findAll() {

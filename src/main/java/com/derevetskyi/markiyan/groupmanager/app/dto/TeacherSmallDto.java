@@ -10,13 +10,10 @@ public class TeacherSmallDto {
 
     private String lastName;
 
-    private int experience;
-
     public TeacherSmallDto(Teacher teacher) {
         this.id = teacher.getId();
         this.firstName = teacher.getFirstName();
         this.lastName = teacher.getLastName();
-        this.experience = teacher.getExperience();
     }
 
     public Long getId() {
@@ -43,11 +40,4 @@ public class TeacherSmallDto {
         this.lastName = lastName;
     }
 
-    public int getExperience() {
-        return experience;
-    }
-
-    public void setExperience(int experience) {
-        this.experience = experience;
-    }
 }

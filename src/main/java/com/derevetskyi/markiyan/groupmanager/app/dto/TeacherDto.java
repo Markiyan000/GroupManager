@@ -1,6 +1,5 @@
 package com.derevetskyi.markiyan.groupmanager.app.dto;
 
-import com.derevetskyi.markiyan.groupmanager.app.model.Group;
 import com.derevetskyi.markiyan.groupmanager.app.model.Teacher;
 
 import java.util.List;
@@ -13,12 +12,15 @@ public class TeacherDto {
 
     private String lastName;
 
+    private int experience;
+
     private List<String> subjects;
 
     public TeacherDto(Teacher teacher) {
         this.id = teacher.getId();
         this.firstName = teacher.getFirstName();
         this.lastName = teacher.getLastName();
+        this.experience = teacher.getExperience();
         this.subjects = teacher.getSubjects();
     }
 
@@ -52,5 +54,13 @@ public class TeacherDto {
 
     public void setSubjects(List<String> subjects) {
         this.subjects = subjects;
+    }
+
+    public int getExperience() {
+        return experience;
+    }
+
+    public void setExperience(int experience) {
+        this.experience = experience;
     }
 }

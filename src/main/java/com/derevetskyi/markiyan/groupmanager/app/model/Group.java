@@ -24,7 +24,7 @@ public class Group {
     @JoinColumn(name = "curator_id")
     private Teacher curator;
 
-    @OneToMany(mappedBy = "group", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "group", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private List<Student> students;
 
     public Group() {
@@ -38,6 +38,7 @@ public class Group {
 
     public void addStudent(Student student) {
         students.add(student);
+        student.setGroup(this);
     }
 
     public Long getId() {

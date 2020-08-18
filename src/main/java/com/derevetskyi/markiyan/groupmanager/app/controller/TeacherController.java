@@ -7,16 +7,20 @@ import com.derevetskyi.markiyan.groupmanager.app.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/teachers")
+@CrossOrigin
 public class TeacherController {
 
-    @Autowired
     private TeacherService teacherService;
+
+    @Autowired
+    public TeacherController(TeacherService teacherService) {
+        this.teacherService = teacherService;
+    }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
