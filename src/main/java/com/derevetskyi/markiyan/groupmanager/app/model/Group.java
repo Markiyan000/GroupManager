@@ -41,6 +41,11 @@ public class Group {
         student.setGroup(this);
     }
 
+    public void removeStudent(Student student) {
+        students.remove(student);
+        student.setGroup(null);
+    }
+
     public Long getId() {
         return id;
     }

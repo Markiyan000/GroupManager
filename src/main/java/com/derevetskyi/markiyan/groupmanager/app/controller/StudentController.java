@@ -23,4 +23,9 @@ public class StudentController {
     public Student saveStudent(@RequestBody Student student, @PathVariable Long groupId) {
         return studentService.saveStudent(groupId, student);
     }
+
+    @GetMapping("/{studentId}/transfer/{groupId}")
+    public void transferToOtherGroup(@PathVariable Long studentId, @PathVariable Long groupId) {
+        studentService.transferToOtherGroup(studentId, groupId);
+    }
 }
