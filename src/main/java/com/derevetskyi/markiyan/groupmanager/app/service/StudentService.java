@@ -29,13 +29,10 @@ public class StudentService {
     }
 
     @Transactional
-    public void transferToOtherGroup(Long studentId, Long groupId) {
+    public void transferToOtherGroup(Long studentId, String groupName) {
         Student student = studentRepository.findById(studentId).get();
-
-        Group oldGroup = student.getGroup();
-        Group newGroup = groupService.findById(groupId);
-
-        oldGroup.removeStudent(student);
+        Group newGroup = groupService.findByName(groupName);
+        
         newGroup.addStudent(student);
     }
 }

@@ -9,10 +9,12 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 @Repository
-@Transactional
+@Transactional(readOnly = true)
 public interface GroupRepository extends JpaRepository<Group, Long> {
 
-    @Transactional(readOnly = true)
     @Query("select g from Group g left join fetch g.students left join fetch g.curator where g.id = :id")
     Optional<Group> findById(@Param(value = "id") Long id);
+
+    Group findByName(String groupName);
+
 }

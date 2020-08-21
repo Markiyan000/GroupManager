@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
+@Transactional(readOnly = true)
 public class GroupService {
 
     private GroupRepository groupRepository;
@@ -18,13 +19,16 @@ public class GroupService {
         this.groupRepository = groupRepository;
     }
 
-    @Transactional(readOnly = true)
     public List<Group> findAll() {
         return groupRepository.findAll();
     }
 
-    @Transactional(readOnly = true)
     public Group findById(Long id) {
         return groupRepository.findById(id).get();
     }
+
+    public Group findByName(String groupName) {
+        return groupRepository.findByName(groupName);
+    }
+
 }
