@@ -25,7 +25,14 @@ public class StudentController {
     }
 
     @GetMapping("/{studentId}/transfer")
+    @ResponseStatus(HttpStatus.OK)
     public void transferToOtherGroup(@PathVariable Long studentId, @RequestParam String groupName) {
         studentService.transferToOtherGroup(studentId, groupName);
+    }
+
+    @DeleteMapping("/{studentId}")
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteStudent(@PathVariable Long studentId) {
+        studentService.deleteStudent(studentId);
     }
 }

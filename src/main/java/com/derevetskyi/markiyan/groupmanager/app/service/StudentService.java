@@ -32,7 +32,12 @@ public class StudentService {
     public void transferToOtherGroup(Long studentId, String groupName) {
         Student student = studentRepository.findById(studentId).get();
         Group newGroup = groupService.findByName(groupName);
-        
+
         newGroup.addStudent(student);
+    }
+
+    @Transactional
+    public void deleteStudent(Long studentId) {
+        studentRepository.deleteById(studentId);
     }
 }
