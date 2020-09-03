@@ -3,6 +3,7 @@ package com.derevetskyi.markiyan.groupmanager.app.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,15 +18,15 @@ public class Group {
     private String name;
 
     @Column(name = "date_of_creation")
-    @JsonFormat(pattern = "dd-MM-yyyy")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateOfCreation;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "curator_id")
     private Teacher curator;
 
     @OneToMany(mappedBy = "group", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    private List<Student> students;
+    private List<Student> students = new ArrayList<>();
 
     public Group() {
 

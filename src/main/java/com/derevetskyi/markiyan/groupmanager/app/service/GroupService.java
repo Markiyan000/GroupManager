@@ -31,4 +31,8 @@ public class GroupService {
         return groupRepository.findByName(groupName);
     }
 
+    @Transactional
+    public Group saveGroup(Group group) {
+        return groupRepository.save(group);
+    }
 }
