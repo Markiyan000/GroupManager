@@ -37,4 +37,12 @@ public class TeacherController {
 
         return new TeacherDto(teacher);
     }
+
+    @GetMapping("/notCurator")
+    @ResponseStatus(HttpStatus.OK)
+    public List<TeacherSmallDto> findAllNotCurators() {
+        List<Teacher> teachers = teacherService.findAllNotCurators();
+
+        return teachers.stream().map(TeacherSmallDto::new).collect(Collectors.toList());
+    }
 }

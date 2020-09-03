@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
+@Transactional(readOnly = true)
 public class TeacherService {
 
     private TeacherRepository teacherRepository;
@@ -17,13 +18,17 @@ public class TeacherService {
         this.teacherRepository = teacherRepository;
     }
 
-    @Transactional(readOnly = true)
     public List<Teacher> findAll() {
         return teacherRepository.findAll();
     }
 
-    @Transactional(readOnly = true)
     public Teacher findById(Long id) {
         return teacherRepository.findById(id).get();
     }
+
+    public List<Teacher> findAllNotCurators() {
+        return teacherRepository.findAllNotCurators();
+    }
+
+
 }
