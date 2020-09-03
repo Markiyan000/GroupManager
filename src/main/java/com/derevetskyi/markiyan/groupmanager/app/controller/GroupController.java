@@ -2,6 +2,7 @@ package com.derevetskyi.markiyan.groupmanager.app.controller;
 
 import com.derevetskyi.markiyan.groupmanager.app.dto.GroupDto;
 import com.derevetskyi.markiyan.groupmanager.app.model.Group;
+import com.derevetskyi.markiyan.groupmanager.app.model.Teacher;
 import com.derevetskyi.markiyan.groupmanager.app.service.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -41,4 +42,9 @@ public class GroupController {
         return groupService.saveGroup(group);
     }
 
+    @GetMapping("/{id}/curator/{curatorId}")
+    @ResponseStatus(HttpStatus.OK)
+    public void addCurator(@PathVariable Long id, @PathVariable Long curatorId) {
+        groupService.addCurator(id, curatorId);
+    }
 }

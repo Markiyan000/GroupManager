@@ -1,7 +1,9 @@
 package com.derevetskyi.markiyan.groupmanager.app.service;
 
 import com.derevetskyi.markiyan.groupmanager.app.model.Group;
+import com.derevetskyi.markiyan.groupmanager.app.model.Teacher;
 import com.derevetskyi.markiyan.groupmanager.app.repository.GroupRepository;
+import com.derevetskyi.markiyan.groupmanager.app.repository.TeacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,9 +16,12 @@ public class GroupService {
 
     private GroupRepository groupRepository;
 
+    private TeacherRepository teacherRepository;
+
     @Autowired
-    public GroupService(GroupRepository groupRepository) {
+    public GroupService(GroupRepository groupRepository, TeacherRepository teacherRepository) {
         this.groupRepository = groupRepository;
+        this.teacherRepository = teacherRepository;
     }
 
     public List<Group> findAll() {
@@ -34,5 +39,13 @@ public class GroupService {
     @Transactional
     public Group saveGroup(Group group) {
         return groupRepository.save(group);
+    }
+
+    @Transactional
+    public void addCurator(Long groupId, Long curatorId) {
+        Teacher curatorProxy = teacherRepository.getOne(curatorId);
+        Group group = findById(groupId);
+
+        group.setCurator(curatorProxy);
     }
 }
