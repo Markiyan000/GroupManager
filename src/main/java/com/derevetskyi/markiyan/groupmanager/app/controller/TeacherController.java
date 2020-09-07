@@ -45,4 +45,10 @@ public class TeacherController {
 
         return teachers.stream().map(TeacherSmallDto::new).collect(Collectors.toList());
     }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Teacher saveTeacher(@RequestBody Teacher teacher) {
+        return teacherService.saveTeacher(teacher);
+    }
 }

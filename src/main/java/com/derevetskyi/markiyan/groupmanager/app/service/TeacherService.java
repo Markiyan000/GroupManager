@@ -30,5 +30,8 @@ public class TeacherService {
         return teacherRepository.findAllNotCurators();
     }
 
-
+    @Transactional
+    public Teacher saveTeacher(Teacher teacher) {
+        return teacherRepository.save(teacher);
+    }
 }
