@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/students")
 @CrossOrigin
@@ -28,6 +30,12 @@ public class StudentController {
     @ResponseStatus(HttpStatus.OK)
     public void transferToOtherGroup(@PathVariable Long studentId, @RequestParam String groupName) {
         studentService.transferToOtherGroup(studentId, groupName);
+    }
+
+    @GetMapping("/withoutGroup")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Student> findAllWithoutGroup() {
+        return studentService.findAllWithoutGroup();
     }
 
     @DeleteMapping("/{studentId}")
