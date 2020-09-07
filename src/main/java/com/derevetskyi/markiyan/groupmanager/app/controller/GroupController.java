@@ -47,4 +47,10 @@ public class GroupController {
     public void addCurator(@PathVariable Long id, @PathVariable Long curatorId) {
         groupService.addCurator(id, curatorId);
     }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void removeGroup(@PathVariable Long id) {
+        groupService.removeGroup(id);
+    }
 }

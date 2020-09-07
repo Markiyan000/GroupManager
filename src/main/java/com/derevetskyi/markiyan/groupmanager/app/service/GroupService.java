@@ -48,4 +48,9 @@ public class GroupService {
 
         group.setCurator(curatorProxy);
     }
+
+    @Transactional
+    public void removeGroup(Long id) {
+        groupRepository.deleteById(id);
+    }
 }
