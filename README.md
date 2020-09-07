@@ -8,3 +8,11 @@ Here provides CRUD operations for entities and implements such nice features as:
  - search students which don't relate to any group
  - add curator to the group
  - search teacher which aren't a curator of any group
+ 
+ Technologies:
+ - Server Side: Java 8, Spring Boot, Spring MVC, Spring Data JPA, Hibernate
+ - Data Storage: MySQL
+ - Build tools: Maven
+ - IDE: Intelij IDEA
+ - VCS: Git
+ - Testing Tools: Postman
